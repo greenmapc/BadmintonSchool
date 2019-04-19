@@ -1,0 +1,457 @@
+a:hover {
+    text-decoration: none !important;
+}
+html {
+    height: 100%;
+}
+body {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    height: 100%;
+    background-image: url("../img/lw.png");
+}
+
+
+/*---------------NAV-MENU---------------*/
+.sign-in {
+    border-color: rgba(212,212,212,0) !important;
+    background-color: cornflowerblue !important;
+    font-size: 15px !important;
+    margin-right: 15px;
+}
+.sign-in:hover {
+    background-color: rgba(100,149,237,0.58) !important;
+}
+.sign-up {
+    border-color: rgba(212,212,212,0) !important;
+    background-color: cornflowerblue !important;
+    font-size: 15px !important;
+}
+
+.sign-up:hover {
+    background-color: rgba(100,149,237,0.58) !important;
+}
+
+/*--------------------NAV----------------------*/
+.nav-logotype {
+    margin-top: 15px;
+    font-family: 'Vollkorn', serif !important;
+}
+.cap {
+    padding-top: 20px !important;
+    padding-left: 70px !important;
+    padding-right: 70px !important;
+}
+.img-logo {
+    padding-bottom: 10px;
+}
+.text-logo {
+    color: #0000FF;
+    font-size: 27px !important;
+}
+.li-vk-icon {
+    padding-left: 300px;
+}
+.li-insta-icon {
+    padding-left: 15px;
+}
+
+
+
+/*------------------FOOTER--------------------*/
+.footer-text {
+    word-spacing: 7px
+}
+
+.creator {
+    float:right;
+}
+
+.footer {
+    float: bottom;
+    background-color: rgba(106,106,106,0.11) !important;
+    height: 60px;
+    margin-top: 30px;
+    margin-bottom: 0;
+    padding-right: 20px;
+}
+
+.menu-item {
+    padding-right: 25px;
+}
+.nav-link {
+    font-size: 20px !important;
+    color: gray;
+}
+
+a.nav-link:after {
+    display: block;
+    content: "";
+    height: 2px;
+    width: 0;
+    background-color: cornflowerblue;
+    transition: width .3s ease-in-out;
+}
+a.nav-link:hover:after,
+a.nav-link:focus:after {
+    width: 100%;
+}
+
+.main-text {
+    font-size: 20px;
+}
+
+.head-text {
+    text-align: center;
+    color: cornflowerblue;
+    padding-top: 30px;
+}
+.content-text {
+    padding-left: 20px;
+}
+.footer-menu-list {
+    list-style-type: none;
+    padding-top: 5px;
+}
+.footer-contacts-number {
+    color: cornflowerblue;
+}
+.footer-contacts-mail {
+    color: cornflowerblue;
+    word-spacing: 30px;
+}
+
+
+/*------------------ERROR STYLE-------------------*/
+.basic-message {
+    margin-top: 70px;
+}
+
+.message {
+    margin-top: 40px;
+    color: rgba(0,0,0,.5);
+}
+
+/*----------------INDEX STYLE----------------------*/
+button,
+button:active,
+button:focus {
+    outline: none !important;
+}
+
+a:hover {
+    text-decoration: none !important;
+    color: grey !important;
+}
+
+/*------------------DROPMENU----------*/
+.dropdown-toggle {
+    color: grey;
+    background-color: #add8e640;
+    padding: 5px;
+    border-radius: 38px;
+    padding-left: 12px;
+}
+
+.dropdown-toggle::after {
+    color: #a9a9a940;
+}
+
+.dropdown-toggle:hover {
+    background-color: #6495ed2e !important;
+}
+
+
+ul.dropdown-menu li {
+    margin-bottom: 5px;
+}
+
+ul.show {
+    margin-top: 8px !important;
+    margin-left: -20px !important;
+}
+
+ul.dropdown-menu li:hover {
+    background-color: #6495ed2e !important;
+    border-radius: 38px !important;
+}
+.drop-menu {
+    padding: 0px 18px !important;
+}
+
+
+/*---------------LOGIN STYLE-------------------*/
+body, html {
+    height: 100%;
+}
+.card-header {
+    margin-bottom: 20px !important;
+    font-size: 18px !important;
+}
+.form-control {
+    height: 35px !important;
+}
+#sign-in-button {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100px;
+}
+#sign-in-warning {
+    text-align: center;
+    font-size: 15px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.signin-error {
+    text-align: center;
+}
+
+.signin-error-block {
+    padding: 0 !important;
+}
+#rememberme {
+    margin-top: 7px !important;
+    margin-right: 8px !important;
+}
+
+
+
+/*----------------PROFILE STYLE------------------*/
+.info-title {
+    padding: 1px 10px !important;
+    font-size: 20px !important;
+    margin-top: 25px !important;
+    background-color: rgba(0,0,0,.03) !important;
+}
+.info-val {
+    margin-left: 10px;
+    font-size: 17px !important;
+}
+p {
+    margin-bottom: 7px !important;
+}
+
+ul#group-list {
+    text-align: center !important;
+    padding-left: 0px !important;
+    margin-top: 30px;
+    list-style-type: none !important;
+}
+
+ul#group-list li.group {
+    width: 100% !important;
+    background-color: rgba(100, 149, 237, 0.11);
+    margin-bottom: 7px;
+    border-radius: 38px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+ul#group-list li.group:hover {
+    background-color: rgba(100, 149, 237, 0.26);
+}
+
+.card-header {
+    font-size: 22px;
+}
+
+/*---------------REGISTRATION STYLE----------------------*/
+.input-sign-in {
+    margin-bottom: 8% !important;
+}
+
+.card-header {
+    font-size: 18px;
+}
+
+.form-control {
+    height: 30px !important;
+}
+
+.field-title {
+    margin-top: 10px !important;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.field-hint {
+    font-size: 13px !important;
+    color: red !important;
+}
+
+.choose-status {
+    margin-top: 50px;
+    margin-left: 40px;
+    font-size: 20px;
+}
+.number-prepend {
+    height: 30px !important;
+}
+
+.input-group {
+    width: 300px !important;
+}
+
+.btn-register {
+    position: absolute !important;
+    right: 0;
+    float: right;
+    margin-top: 20px;
+    margin-bottom: 100px;
+    background-color: cornflowerblue;
+}
+
+#div-without-hint {
+    max-height: 43px;
+    min-height: 43px;
+}
+
+
+/*----------------------WARNING---------------------*/
+.sign-up-div-hint {
+    min-height: 37.11px;
+    max-height: 37.11px;
+}
+#radio-warning {
+    font-size: 13px;
+    height: 30px;
+    padding-top: 5px;
+    width: 250px;
+    margin-left: 20px;
+    display: none;
+}
+#empty-field {
+    position: absolute;
+    left: 100px;
+    width: 480px;
+    min-height: 30px;
+    max-height: 30px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    text-align: center;
+}
+
+
+/*-----------------------SETTING STYLE-----------------------*/
+.groups {
+    width: 100%;
+    height: 43px;
+    border: 1px solid rgb(206, 212, 218);
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-repeat: initial;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition-property: border-color, box-shadow;
+}
+
+.group:hover, .group:focus, .group:active{
+    background-color: lightblue !important;
+}
+.group:active {
+    background-color: lightblue !important;
+}
+
+.hint {
+    color: grey;
+    font-size: 15px;
+}
+
+.change {
+    float: right;
+    margin-top: 20px;
+    background-color: cornflowerblue;
+}
+
+.settings-warning {
+    margin-top: 3%;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    width: 40% !important;
+    text-align: center;
+}
+
+.settings-warning-hint {
+    color: red;
+}
+
+/*---------------USER LIST STYLE--------------*/
+.list {
+    margin-top: 15px;
+
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.11) !important;
+}
+
+.card-header {
+    font-size: 20px !important;
+}
+
+.search {
+    height: 30px !important;
+}
+
+.submit-search {
+    padding: 3px 8px !important;
+    margin-top: 13px !important;
+    border-color: rgba(212,212,212,0) !important;
+
+}
+
+.submit-search:hover {
+    background-color: rgb(100, 149, 237) !important;
+}
+
+/*---------------NEWS-----------------*/
+.news {
+    margin-top: 3%;
+}
+.pagination-row {
+    margin-bottom: 5%;
+}
+.date {
+    color: gray;
+    padding: 0rem 0.5rem !important;
+    font-size: 18px !important;
+    margin-bottom: 0 !important;
+    background-color: rgba(128, 128, 128, 0.04) !important;
+}
+.vertical-align {
+    display: flex;
+    align-items: center;
+}
+.news-img {
+    display: inline-block;
+    height: auto;
+    max-width: 100%;
+}
+.card-body {
+    padding: .5rem !important;
+}
+
+.news-desc {
+    margin-bottom: 6%;
+}
+
+/*------------------MAIN PAGE -------------------*/
+.main-text {
+    padding-top: 50px !important;
+    padding-left: 50px !important;
+}
+
+.main-img {
+    float: right;
+    width: 300px;
+    height: 400px;
+}
+
+/*-------------------ERROR-----------------------*/
+.page-error-message {
+    margin-top: 7%;
+    color: cornflowerblue !important;
+}

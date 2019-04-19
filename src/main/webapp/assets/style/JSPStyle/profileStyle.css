@@ -1,0 +1,43 @@
+.title {
+    /*width: 80% !important;*/
+}
+.info-title {
+    padding: 1px 10px !important;
+    font-size: 20px !important;
+    margin-top: 25px !important;
+    background-color: rgba(0,0,0,.03) !important;
+}
+.info-val {
+    margin-left: 10px;
+    font-size: 17px !important;
+}
+p {
+    margin-bottom: 7px !important;
+}
+
+ul#group-list {
+    padding-left: 0px !important;
+    margin-top: 30px;
+    list-style-type: none !important;
+}
+
+ul#group-list li.group {
+    width: 100% !important;
+    background-color: rgba(100, 149, 237, 0.11);
+    margin-bottom: 7px;
+    border-radius: 38px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+ul#group-list li.group:hover {
+    background-color: rgba(100, 149, 237, 0.26);
+}
+
+.card-header {
+    font-size: 22px;
+}
+
+.coach-href {
+
+}

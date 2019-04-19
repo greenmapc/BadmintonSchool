@@ -1,0 +1,114 @@
+a:hover {
+    text-decoration: none !important;
+}
+html {
+    height: 100%;
+}
+body {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    height: 100%;
+    background-image: url("../../img/lw.png");
+}
+
+
+/*---------------NAV-MENU---------------*/
+.sign-in {
+    border-color: rgba(212,212,212,0) !important;
+    background-color: cornflowerblue !important;
+    font-size: 15px !important;
+    margin-right: 15px;
+}
+.sign-in:hover {
+    background-color: rgba(100,149,237,0.58) !important;
+}
+.sign-up {
+    border-color: rgba(212,212,212,0) !important;
+    background-color: cornflowerblue !important;
+    font-size: 15px !important;
+}
+
+.sign-up:hover {
+    background-color: rgba(100,149,237,0.58) !important;
+}
+
+/*--------------------NAV----------------------*/
+.nav-logotype {
+    margin-top: 15px;
+    font-family: 'Vollkorn', serif !important;
+}
+.cap {
+    padding-top: 20px !important;
+    padding-left: 70px !important;
+    padding-right: 70px !important;
+}
+.img-logo {
+    padding-bottom: 10px;
+}
+.text-logo {
+    color: #0000FF;
+    font-size: 27px !important;
+}
+.li-vk-icon {
+    padding-left: 300px;
+}
+.li-insta-icon {
+    padding-left: 15px;
+}
+
+
+
+/*------------------FOOTER--------------------*/
+.footer {
+    float: bottom;
+    background-color: rgba(106,106,106,0.11) !important;
+    height: 60px;
+    margin-top: 30px;
+    margin-bottom: 0;
+    padding-right: 20px;
+}
+
+.menu-item {
+    padding-right: 25px;
+}
+.nav-link {
+    font-size: 20px !important;
+    color: gray;
+}
+
+a.nav-link:after {
+    display: block;
+    content: "";
+    height: 2px;
+    width: 0;
+    background-color: cornflowerblue;
+    transition: width .3s ease-in-out;
+}
+a.nav-link:hover:after,
+a.nav-link:focus:after {
+    width: 100%;
+}
+
+.main-text {
+    font-size: 20px;
+}
+
+.head-text {
+    text-align: center;
+    color: cornflowerblue;
+    padding-top: 30px;
+}
+.content-text {
+    padding-left: 20px;
+}
+.footer-menu-list {
+    list-style-type: none;
+    padding-top: 5px;
+}
+.footer-contacts-number {
+    color: cornflowerblue;
+}
+.footer-contacts-mail {
+    color: cornflowerblue;
+    word-spacing: 30px;
+}

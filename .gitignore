@@ -1,0 +1,14 @@
+*.class
+
+*.jar
+*.war
+*.ear
+
+
+target/
+.idea/
+*.iml
+*.log
+*.lck
+*.jar
+*/dependency-reduced-pom.xml
