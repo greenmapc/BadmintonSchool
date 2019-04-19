@@ -1,0 +1,2 @@
+# BadmintonSchool
+Spring MVC project
