@@ -24,7 +24,7 @@ public class VkWallRecordRepositoryCustomImpl implements VkWallRecordRepositoryC
     }
 
     public List<VkWallRecord> findAllPagination(int offset, int limit) {
-        return entityManager.createQuery("FROM VkWallRecord r", VkWallRecord.class)
+        return entityManager.createQuery("FROM VkWallRecord r ORDER BY r.date DESC", VkWallRecord.class)
                 .setFirstResult(offset)
                 .setMaxResults(limit)
                 .getResultList();
