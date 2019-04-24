@@ -68,6 +68,17 @@ public class GroupServiceImpl implements GroupService {
         return true;
     }
 
+    @Override
+    public boolean save(Group group) {
+        try {
+            groupRepository.save(group);
+        } catch (DataIntegrityViolationException e) {
+            return false;
+        }
+
+        return true;
+    }
+
     @Autowired
     public void setGroupRepository(GroupRepository groupRepository) {
         this.groupRepository = groupRepository;

@@ -7,7 +7,7 @@
                 <p class="admin-headline"> Группы </p>
                 <ul class="admin">
                     <li class="admin-section">
-                        <a href="#"> Добавить группу </a>
+                        <a href=${action("AC#getCreatingPage")}> Добавить группу </a>
                     </li>
                     <li class="admin-section">
                         <a href=${action("AC#getGroupList")}> Посмотреть все группы </a>
@@ -28,7 +28,7 @@
                                     </td>
                                     <td>
                                         <div class="btn-group">
-                                            <a class="btn" href="#">
+                                            <a class="btn" href=${action("AC#getCreatingPage")}>
                                                 Новая
                                             </a>
                                             <a class="btn" href=${action("AC#getGroupList")}>

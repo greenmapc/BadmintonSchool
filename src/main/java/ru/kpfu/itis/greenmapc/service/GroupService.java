@@ -16,4 +16,5 @@ public interface GroupService {
     void createPrototype(Group original, Group prototype);
 
     boolean update(Group group);
+    boolean save(Group group);
 }

@@ -76,6 +76,32 @@ public class AdminController {
         return "admin/groupSettings";
     }
 
+    @GetMapping("/create")
+    public String getCreatingPage(@AuthenticationPrincipal User user,
+                                  ModelMap modelMap) {
+        modelMap.addAttribute("user", user);
+        modelMap.addAttribute("group", new Group());
+        return "admin/newGroup";
+    }
+
+    @PostMapping("/create")
+    public String createGroup(@AuthenticationPrincipal User user,
+                              ModelMap modelMap,
+                              @Validated @ModelAttribute("group") Group group,
+                              BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            modelMap.addAttribute("inputError", "Все поля должны быть корректно заполнены");
+        } else {
+            if (!groupService.save(group)) {
+                modelMap.addAttribute("error", "Группа с таким номером уже существует");
+            } else {
+                modelMap.addAttribute("success", "Группа создана");
+            }
+        }
+
+        modelMap.addAttribute("user", user);
+        return "admin/newGroup";
+    }
 
 
     @Autowired
