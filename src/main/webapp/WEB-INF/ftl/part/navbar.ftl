@@ -23,8 +23,8 @@
                             <li class="divider"></li>
                             <li><a href=${action('UC#userSettings', 0, user.getUsername())} class="drop-menu"> Настройки </a></li>
                             <li class="divider"></li>
-                            <li><a href="${context.getContextPath()}/logout" class="drop-menu"> Выход </a></li>
                         </#if>
+                        <li><a href="${context.getContextPath()}/logout" class="drop-menu"> Выход </a></li>
                     </ul>
                 </div>
             <#else>

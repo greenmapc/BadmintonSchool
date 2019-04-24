@@ -19,11 +19,9 @@
                                         <th>Возрастная категория</th>
                                     </tr>
                                     <#list groups as group>
-                                        <tr
-                                                <#--onclick="window.location.href='${action('GC#personalProfile', 0, user.getUsername())}'"-->
-                                        >
+                                        <tr onclick="window.location.href='${action('AC#getGroupSettings', 0, group.getGroupNumber())}'">
                                         <td>${group.id}</td>
-                                        <td>${group.groupNumber}</td>
+                                        <td>${group.getGroupNumber()}</td>
                                         <td>${normalize('${group.ageCategory}')}</td>
                                         </tr>
                                     </#list>

@@ -1,6 +1,7 @@
 package ru.kpfu.itis.greenmapc.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import ru.kpfu.itis.greenmapc.model.Group;
 import ru.kpfu.itis.greenmapc.model.User;
@@ -44,6 +45,27 @@ public class GroupServiceImpl implements GroupService {
     @Override
     public List<Group> getAllGroups() {
         return groupRepository.findAll();
+    }
+
+    @Override
+    public void createPrototype(Group original, Group prototype) {
+        prototype.setId(original.getId());
+        prototype.setGroupNumber(original.getGroupNumber());
+        prototype.setAgeCategory(original.getAgeCategory());
+        prototype.setCoach(original.getCoach());
+        prototype.setParticipants(original.getParticipants());
+        prototype.setScheduleSet(original.getScheduleSet());
+    }
+
+    @Override
+    public boolean update(Group group) {
+        try {
+            groupRepository.updateGroup(group.getAgeCategory(), group.getGroupNumber(), group.getId());
+        } catch (DataIntegrityViolationException e) {
+            return false;
+        }
+
+        return true;
     }
 
     @Autowired

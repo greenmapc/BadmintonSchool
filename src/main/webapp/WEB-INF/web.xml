@@ -4,8 +4,8 @@
         <location>/assets/error/404_error.html</location>
     </error-page>
 
-    <error-page>
-        <error-code>500</error-code>
-        <location>/assets/error/500_error.html</location>
-    </error-page>
+    <!--<error-page>-->
+        <!--<error-code>500</error-code>-->
+        <!--<location>/assets/error/500_error.html</location>-->
+    <!--</error-page>-->
 </web-app>

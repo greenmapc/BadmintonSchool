@@ -75,7 +75,7 @@ public class UserController {
 
         form.buildByUser(user);
 
-       addOptionsForSettingsPage(user, modelMap);
+        addOptionsForSettingsPage(user, modelMap);
 
         modelMap.addAttribute("user", user);
         return "settings";

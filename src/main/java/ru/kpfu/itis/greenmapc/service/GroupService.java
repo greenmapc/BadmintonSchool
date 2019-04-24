@@ -13,4 +13,7 @@ public interface GroupService {
     Map<String, String> getAllEmptyGroupNumbersWithUsersGroup(User user);
     Map<String, String> getAllMapGroups();
     List<Group> getAllGroups();
+    void createPrototype(Group original, Group prototype);
+
+    boolean update(Group group);
 }
