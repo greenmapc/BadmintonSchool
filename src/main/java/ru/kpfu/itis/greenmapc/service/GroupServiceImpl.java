@@ -31,7 +31,7 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public Map<String, String> getAllGroups() {
+    public Map<String, String> getAllMapGroups() {
         Map<String, String> result = new HashMap();
 
         List<Group> groupList = groupRepository.findAll();
@@ -39,6 +39,11 @@ public class GroupServiceImpl implements GroupService {
             result.put(String.valueOf(group.getGroupNumber()), String.valueOf(group.getGroupNumber()));
         }
         return result;
+    }
+
+    @Override
+    public List<Group> getAllGroups() {
+        return groupRepository.findAll();
     }
 
     @Autowired

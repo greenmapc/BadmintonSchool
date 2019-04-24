@@ -1,7 +1,6 @@
 package ru.kpfu.itis.greenmapc.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -126,7 +125,7 @@ public class UserController {
         }
 
         modelMap.addAttribute("options", groupService.getAllEmptyGroupNumbersWithUsersGroup(user));
-        modelMap.addAttribute("allOptions", groupService.getAllGroups());
+        modelMap.addAttribute("allOptions", groupService.getAllMapGroups());
         modelMap.addAttribute("roles", roleName);
     }
 

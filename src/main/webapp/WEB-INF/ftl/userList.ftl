@@ -55,7 +55,7 @@
                                     </tr>
 
                                     <#list users as user>
-                                        <tr onclick="window.location.href='${action('UC#personalProfile', 0, user.getUsername())}'"">
+                                        <tr onclick="window.location.href='${action('UC#personalProfile', 0, user.getUsername())}'">
                                             <td>${normalize('${user.getUsername()}')}</td>
 
                                             <td>${normalize('${user.getSurname()}')}</td>

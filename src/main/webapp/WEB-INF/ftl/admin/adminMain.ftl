@@ -10,7 +10,7 @@
                         <a href="#"> Добавить группу </a>
                     </li>
                     <li class="admin-section">
-                        <a href="#"> Посмотреть все группы </a>
+                        <a href=${action("AC#getGroupList")}> Посмотреть все группы </a>
                     </li>
                 </ul>
             </div>
@@ -31,7 +31,7 @@
                                             <a class="btn" href="#">
                                                 Новая
                                             </a>
-                                            <a class="btn" href="#">
+                                            <a class="btn" href=${action("AC#getGroupList")}>
                                                 Список
                                             </a>
                                         </div>

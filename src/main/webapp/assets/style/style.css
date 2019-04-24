@@ -482,3 +482,11 @@ ul.admin {
 li.admin-section:hover {
     background-color: rgba(107, 161, 255, 0.21);
 }
+
+.group-table th {
+    text-align: center;
+}
+
+.group-table tr {
+    text-align: center;
+}
