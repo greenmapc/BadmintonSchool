@@ -4,6 +4,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.Set;
 
 @Entity
@@ -17,9 +20,11 @@ public class Group {
     private Long id;
 
     @Column(name = "group_number", unique = true)
+    @NotNull
     private Integer groupNumber;
 
     @Column(name = "age_category")
+    @NotBlank
     private String ageCategory;
 
     @ManyToOne

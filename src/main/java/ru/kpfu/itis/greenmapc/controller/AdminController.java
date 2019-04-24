@@ -60,10 +60,14 @@ public class AdminController {
                                       @AuthenticationPrincipal User user,
                                       ModelMap modelMap) {
 
-        if(!groupService.update(group)) {
-            modelMap.addAttribute("error", "Группа с таким номером уже существует");
+        if(bindingResult.hasErrors()) {
+            modelMap.addAttribute("inputError", "Все поля должны быть корректно заполнены");
         } else {
-            modelMap.addAttribute("success", "Информация обновлена");
+            if (!groupService.update(group)) {
+                modelMap.addAttribute("error", "Группа с таким номером уже существует");
+            } else {
+                modelMap.addAttribute("success", "Информация обновлена");
+            }
         }
 
         modelMap.addAttribute("user", user);

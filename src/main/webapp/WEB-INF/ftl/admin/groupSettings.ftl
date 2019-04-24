@@ -43,6 +43,12 @@
                                 <p class="signin-error"> ${error} </p>
                             </div>
                         </div>
+                    <#elseif inputError??>
+                        <div class="row justify-content-center">
+                            <div class="alert alert-danger signin-error-block settings-warning" >
+                                <p class="signin-error"> ${inputError} </p>
+                            </div>
+                        </div>
                     </#if>
 
                 </div>
