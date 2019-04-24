@@ -3,7 +3,7 @@
 <#import "/spring.ftl" as spring/>
 <#import "function/ru_role.ftl" as role_function/>
 
-<#assign type = ""coachRole = "COACH"/>
+<#assign coachRole = "COACH"/>
 <#assign athleteRole = "ATHLETE"/>
 <#assign noInforamtion = "Информация не указана">
 

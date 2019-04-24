@@ -24,10 +24,6 @@ public class Login {
     @Column(name = "username", unique = true)
     private String username;
 
-
-    @Column(name = "test")
-    private int test;
-
     @OneToOne(mappedBy = "login", fetch = FetchType.LAZY)
     @ToString.Exclude private User user;
 

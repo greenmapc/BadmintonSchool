@@ -455,3 +455,30 @@ ul#group-list li.group:hover {
     margin-top: 7%;
     color: cornflowerblue !important;
 }
+
+
+
+
+/*-----------------ADMIN-------------------------*/
+.admin-page {
+    margin-top: 5%;
+}
+
+ul.admin {
+    list-style-type: none !important;
+    padding-inline-start: 10px !important;
+}
+
+.admin-headline {
+    padding: 3%;
+    font-size: 25px;
+}
+
+.admin-section {
+    padding: 3%;
+    font-size: 16px;
+}
+
+li.admin-section:hover {
+    background-color: rgba(107, 161, 255, 0.21);
+}

@@ -1,5 +1,8 @@
 <#import "/spring.ftl" as spring/>
 
+<#assign adminRole = "ADMIN"/>
+
+
 <div class="container asd">
     <nav class="navbar cap">
         <a class="navbar-brand nav-logotype" href=${action('MC#index')}>
@@ -13,12 +16,15 @@
                         <span class="username"> ${user.getLogin().getUsername()} </span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href=${action('UC#personalProfile', 0, user.getUsername())} class="drop-menu"> Мой профиль </a></li>
-                        <li class="divider"></li>
-                        <li><a href=${action('UC#userSettings', 0, user.getUsername())} class="drop-menu"> Настройки </a></li>
-                        <li class="divider"></li>
-                        <li><a href="${context.getContextPath()}/logout" class="drop-menu"> Выход </a></li>
-
+                        <#if user.getRoles()?seq_contains(adminRole)>
+                            <li><a href=${action('AC#getAdminPage')} class="drop-menu"> Страница админа </a></li>
+                        <#else>
+                            <li><a href=${action('UC#personalProfile', 0, user.getUsername())} class="drop-menu"> Мой профиль </a></li>
+                            <li class="divider"></li>
+                            <li><a href=${action('UC#userSettings', 0, user.getUsername())} class="drop-menu"> Настройки </a></li>
+                            <li class="divider"></li>
+                            <li><a href="${context.getContextPath()}/logout" class="drop-menu"> Выход </a></li>
+                        </#if>
                     </ul>
                 </div>
             <#else>
