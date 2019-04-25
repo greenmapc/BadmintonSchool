@@ -16,7 +16,7 @@
                         <a href=${action("AC#getGroupList")}> Посмотреть все группы </a>
                     </li>
                     <li class="admin-section">
-                        <a href="#"> Посмотреть расписание </a>
+                        <a href=${action("AC#getSchedule")}> Посмотреть расписание </a>
                     </li>
                 </ul>
             </div>
@@ -52,7 +52,7 @@
                                             <a class="btn" href=${action("AC#getCreatingSchedulePage")}>
                                                 Новое
                                             </a>
-                                            <a class="btn" href="#">
+                                            <a class="btn" href=${action("AC#getSchedule")}>
                                                 Список
                                             </a>
                                         </div>

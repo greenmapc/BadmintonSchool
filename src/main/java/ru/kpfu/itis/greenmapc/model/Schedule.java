@@ -5,7 +5,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Time;
-import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
@@ -24,7 +23,7 @@ public class Schedule {
     @Column(name = "weekday")
     private String weekday;
 
-    @ManyToMany(mappedBy = "scheduleSet")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "scheduleSet")
     private Set<Group> groups;
 
 }

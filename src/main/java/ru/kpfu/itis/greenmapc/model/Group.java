@@ -1,7 +1,9 @@
 package ru.kpfu.itis.greenmapc.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -13,6 +15,7 @@ import java.util.Set;
 @Table(name = "school_group")
 @Data
 @NoArgsConstructor
+@ToString(exclude = "scheduleSet")
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,11 +30,11 @@ public class Group {
     @NotBlank
     private String ageCategory;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "coach", referencedColumnName = "id")
     private User coach;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "group_schedule",
             joinColumns = @JoinColumn(name = "group_id"),

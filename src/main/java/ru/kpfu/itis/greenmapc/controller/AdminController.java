@@ -135,6 +135,15 @@ public class AdminController {
         return "admin/newSchedule";
     }
 
+    @GetMapping("/schedule")
+    public String getSchedule(@AuthenticationPrincipal User user,
+                              ModelMap modelMap) {
+        modelMap.addAttribute("user", user);
+        modelMap.addAttribute("schedules", scheduleService.getSchedule());
+
+        return "admin/schedule";
+    }
+
 
 
     @Autowired
