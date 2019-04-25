@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 public class AdminLoggingAspect {
     private Logger LOGGER = Logger.getLogger(AdminLoggingAspect.class.getName());
 
-    @AfterReturning(pointcut = "execution(* ru.kpfu.itis.greenmapc.service.GroupServiceImpl.update(..))", returning = "value")
+    @AfterReturning(pointcut = "execution(* ru.kpfu.itis.greenmapc.service.GroupService.update(..))", returning = "value")
     public void groupUpdate(JoinPoint joinPoint, Object value) {
         if((boolean) value) {
             Group group = (Group) joinPoint.getArgs()[0];
@@ -24,7 +24,7 @@ public class AdminLoggingAspect {
         }
     }
 
-    @AfterReturning(pointcut = "execution(* ru.kpfu.itis.greenmapc.service.GroupServiceImpl.save(..))", returning = "value")
+    @AfterReturning(pointcut = "execution(* ru.kpfu.itis.greenmapc.service.GroupService.save(..))", returning = "value")
     public void groupCreate(JoinPoint joinPoint, Object value) {
         if((boolean) value) {
             Group group = (Group) joinPoint.getArgs()[0];

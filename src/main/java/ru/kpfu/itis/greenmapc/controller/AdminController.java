@@ -8,10 +8,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
+import ru.kpfu.itis.greenmapc.form.ScheduleForm;
 import ru.kpfu.itis.greenmapc.model.Group;
 import ru.kpfu.itis.greenmapc.model.User;
 import ru.kpfu.itis.greenmapc.service.GroupService;
+import ru.kpfu.itis.greenmapc.service.ScheduleService;
+import ru.kpfu.itis.greenmapc.util.WeekdaysListCreator;
 
+import java.sql.Time;
 import java.util.Optional;
 
 @Controller
@@ -19,6 +23,7 @@ import java.util.Optional;
 public class AdminController {
 
     private GroupService groupService;
+    private ScheduleService scheduleService;
 
     @GetMapping("/")
     public String getAdminPage(@AuthenticationPrincipal User user,
@@ -35,7 +40,7 @@ public class AdminController {
         return "admin/groupList";
     }
 
-    @GetMapping("/settings/{groupNumber}")
+    @GetMapping("/settings/group/{groupNumber}")
     public String getGroupSettings(@PathVariable int groupNumber,
                                    @ModelAttribute("group") Group group,
                                    @AuthenticationPrincipal User user,
@@ -53,7 +58,7 @@ public class AdminController {
         return "admin/groupSettings";
     }
 
-    @PostMapping("/settings/{groupNumber}")
+    @PostMapping("/settings/group/{groupNumber}")
     public String changeGroupSettings(@PathVariable int groupNumber,
                                       @Validated @ModelAttribute("group") Group group,
                                       BindingResult bindingResult,
@@ -76,7 +81,7 @@ public class AdminController {
         return "admin/groupSettings";
     }
 
-    @GetMapping("/create")
+    @GetMapping("/create/group")
     public String getCreatingPage(@AuthenticationPrincipal User user,
                                   ModelMap modelMap) {
         modelMap.addAttribute("user", user);
@@ -84,7 +89,7 @@ public class AdminController {
         return "admin/newGroup";
     }
 
-    @PostMapping("/create")
+    @PostMapping("/create/group")
     public String createGroup(@AuthenticationPrincipal User user,
                               ModelMap modelMap,
                               @Validated @ModelAttribute("group") Group group,
@@ -103,9 +108,42 @@ public class AdminController {
         return "admin/newGroup";
     }
 
+    @GetMapping("/create/schedule")
+    public String getCreatingSchedulePage(@AuthenticationPrincipal User user,
+                                          ModelMap modelMap) {
+        modelMap.addAttribute("user", user);
+        modelMap.addAttribute("schedule", new ScheduleForm());
+        modelMap.addAttribute("weekdays", WeekdaysListCreator.create());
+
+        return "admin/newSchedule";
+    }
+
+    @PostMapping("/create/schedule")
+    public String createSchedule(@AuthenticationPrincipal User user,
+                                 @Validated @ModelAttribute("schedule") ScheduleForm schedule,
+                                 BindingResult bindingResult,
+                                 ModelMap modelMap) {
+        if(!scheduleService.saveFromForm(schedule)) {
+            //ToDo:catch exception
+        } else {
+            modelMap.addAttribute("success", "Расаписание создано");
+        }
+
+        modelMap.addAttribute("user", user);
+        modelMap.addAttribute("weekdays", WeekdaysListCreator.create());
+
+        return "admin/newSchedule";
+    }
+
+
 
     @Autowired
     public void setGroupService(GroupService groupService) {
         this.groupService = groupService;
+    }
+
+    @Autowired
+    public void setScheduleService(ScheduleService scheduleService) {
+        this.scheduleService = scheduleService;
     }
 }

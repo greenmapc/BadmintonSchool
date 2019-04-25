@@ -490,3 +490,7 @@ li.admin-section:hover {
 .group-table tr {
     text-align: center;
 }
+
+.weekday-input {
+    height: 40px !important;
+}
