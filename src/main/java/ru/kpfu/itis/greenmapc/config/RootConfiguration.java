@@ -21,10 +21,11 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({"ru.kpfu.itis.greenmapc.repository", "ru.kpfu.itis.greenmapc.service", "ru.kpfu.itis.greenmapc.api.service"})
+@ComponentScan({"ru.kpfu.itis.greenmapc.repository",
+                "ru.kpfu.itis.greenmapc.service",
+                "ru.kpfu.itis.greenmapc.api.service"})
 @EnableJpaRepositories("ru.kpfu.itis.greenmapc.repository")
 @PropertySource("classpath:/db.properties")
-@EnableAspectJAutoProxy(proxyTargetClass = true)
 public class RootConfiguration {
     @Resource
     private Environment env;
@@ -82,11 +83,6 @@ public class RootConfiguration {
     @Bean
     public UserDetailsService userDetailsService() {
         return new UserDetailsServiceImpl();
-    }
-
-    @Bean
-    public AnnotationAwareAspectJAutoProxyCreator annotationAwareAspectJAutoProxyCreator() {
-        return new AnnotationAwareAspectJAutoProxyCreator();
     }
 
 }

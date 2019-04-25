@@ -27,8 +27,9 @@ import java.util.Map;
 
 
 @Configuration
-@ComponentScan(basePackages = {"ru.kpfu.itis.greenmapc.controller"})
+@ComponentScan(basePackages = {"ru.kpfu.itis.greenmapc.controller", "ru.kpfu.itis.greenmapc.aop", "ru.kpfu.itis.greenmapc.service"})
 @EnableWebMvc
+@EnableAspectJAutoProxy
 public class WebConfig implements WebMvcConfigurer {
 
     @Autowired
