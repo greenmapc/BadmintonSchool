@@ -5,24 +5,20 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.format.FormatterRegistry;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
-import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.handler.HandlerExceptionResolverComposite;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
-import ru.kpfu.itis.greenmapc.service.security.UserDetailsServiceImpl;
-import ru.kpfu.itis.greenmapc.util.converter.GroupListConverter;
+import ru.kpfu.itis.greenmapc.repository.ScheduleRepository;
+import ru.kpfu.itis.greenmapc.util.converter.GroupConverter;
+import ru.kpfu.itis.greenmapc.util.converter.ScheduleConverter;
 import ru.kpfu.itis.greenmapc.util.freemarker.ActionPathMethod;
 import ru.kpfu.itis.greenmapc.util.freemarker.HtmlInjectionSecurityMethod;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -33,7 +29,10 @@ import java.util.Map;
 public class WebConfig implements WebMvcConfigurer {
 
     @Autowired
-    private GroupListConverter groupListConverter;
+    private GroupConverter groupConverter;
+
+    @Autowired
+    private ScheduleConverter scheduleConverter;
 
     @Bean
     public FreeMarkerViewResolver freemarkerViewResolver() {
@@ -68,7 +67,8 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addFormatters(FormatterRegistry registry) {
-        registry.addConverter(groupListConverter);
+        registry.addConverter(groupConverter);
+        registry.addConverter(scheduleConverter);
     }
 
     @Bean
@@ -95,8 +95,13 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public GroupListConverter groupListConverter() {
-        return new GroupListConverter();
+    public GroupConverter groupListConverter() {
+        return new GroupConverter();
+    }
+
+    @Bean
+    public ScheduleConverter scheduleConverter() {
+        return new ScheduleConverter();
     }
 
     private Map<String, Object> setFreemarkerVariable() {

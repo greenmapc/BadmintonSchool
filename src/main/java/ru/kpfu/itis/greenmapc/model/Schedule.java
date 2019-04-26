@@ -2,6 +2,7 @@ package ru.kpfu.itis.greenmapc.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.sql.Time;
@@ -23,7 +24,8 @@ public class Schedule {
     @Column(name = "weekday")
     private String weekday;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "scheduleSet")
-    private Set<Group> groups;
+//    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "scheduleSet")
+//    @ToString.Exclude
+//    private Set<Group> groups;
 
 }

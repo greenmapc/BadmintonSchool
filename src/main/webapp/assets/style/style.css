@@ -494,3 +494,7 @@ li.admin-section:hover {
 .weekday-input {
     height: 40px !important;
 }
+
+.schedule-input {
+    height: 60px !important;
+}

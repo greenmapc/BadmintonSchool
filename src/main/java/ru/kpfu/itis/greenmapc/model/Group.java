@@ -1,6 +1,5 @@
 package ru.kpfu.itis.greenmapc.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -8,14 +7,13 @@ import lombok.ToString;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "school_group")
 @Data
 @NoArgsConstructor
-@ToString(exclude = "scheduleSet")
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,11 +21,9 @@ public class Group {
     private Long id;
 
     @Column(name = "group_number", unique = true)
-    @NotNull
     private Integer groupNumber;
 
     @Column(name = "age_category")
-    @NotBlank
     private String ageCategory;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -40,7 +36,8 @@ public class Group {
             joinColumns = @JoinColumn(name = "group_id"),
             inverseJoinColumns = @JoinColumn(name = "schedule_id")
     )
-    private Set<Schedule> scheduleSet;
+    @ToString.Exclude
+    private Set<Schedule> scheduleSet = new HashSet<>();
 
     @OneToMany(mappedBy = "group")
     private Set<User> participants;

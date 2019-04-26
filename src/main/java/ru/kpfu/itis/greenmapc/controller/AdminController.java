@@ -8,14 +8,15 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
+import ru.kpfu.itis.greenmapc.form.GroupForm;
 import ru.kpfu.itis.greenmapc.form.ScheduleForm;
 import ru.kpfu.itis.greenmapc.model.Group;
+import ru.kpfu.itis.greenmapc.model.Schedule;
 import ru.kpfu.itis.greenmapc.model.User;
 import ru.kpfu.itis.greenmapc.service.GroupService;
 import ru.kpfu.itis.greenmapc.service.ScheduleService;
-import ru.kpfu.itis.greenmapc.util.WeekdaysListCreator;
+import ru.kpfu.itis.greenmapc.util.SelectListCreator;
 
-import java.sql.Time;
 import java.util.Optional;
 
 @Controller
@@ -84,6 +85,7 @@ public class AdminController {
     @GetMapping("/create/group")
     public String getCreatingPage(@AuthenticationPrincipal User user,
                                   ModelMap modelMap) {
+        modelMap.addAttribute("schedule", SelectListCreator.scheduleCreate(scheduleService.findAll()));
         modelMap.addAttribute("user", user);
         modelMap.addAttribute("group", new Group());
         return "admin/newGroup";
@@ -104,6 +106,7 @@ public class AdminController {
             }
         }
 
+        modelMap.addAttribute("schedule", SelectListCreator.scheduleCreate(scheduleService.findAll()));
         modelMap.addAttribute("user", user);
         return "admin/newGroup";
     }
@@ -113,7 +116,7 @@ public class AdminController {
                                           ModelMap modelMap) {
         modelMap.addAttribute("user", user);
         modelMap.addAttribute("schedule", new ScheduleForm());
-        modelMap.addAttribute("weekdays", WeekdaysListCreator.create());
+        modelMap.addAttribute("weekdays", SelectListCreator.weekdaysCreate());
 
         return "admin/newSchedule";
     }
@@ -130,7 +133,7 @@ public class AdminController {
         }
 
         modelMap.addAttribute("user", user);
-        modelMap.addAttribute("weekdays", WeekdaysListCreator.create());
+        modelMap.addAttribute("weekdays", SelectListCreator.weekdaysCreate());
 
         return "admin/newSchedule";
     }
@@ -139,7 +142,7 @@ public class AdminController {
     public String getSchedule(@AuthenticationPrincipal User user,
                               ModelMap modelMap) {
         modelMap.addAttribute("user", user);
-        modelMap.addAttribute("schedules", scheduleService.getSchedule());
+        modelMap.addAttribute("groups", groupService.getSchedule());
 
         return "admin/schedule";
     }

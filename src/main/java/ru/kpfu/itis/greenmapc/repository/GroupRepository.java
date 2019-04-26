@@ -27,7 +27,6 @@ public interface GroupRepository extends JpaRepository<Group, Long> {
                      @Param("id") Long id);
 
     @Query("SELECT g FROM Group g " +
-            "JOIN g.scheduleSet s " +
-            "WHERE s.id = :id")
-    List<Group> findGroupByScheduleId(@Param("id") Long id);
+            "JOIN g.scheduleSet s")
+    List<Group> findAllWithSchedule();
 }

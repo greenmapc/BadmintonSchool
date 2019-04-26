@@ -63,6 +63,7 @@ public class GroupService {
     }
 
     public boolean save(Group group) {
+
         try {
             groupRepository.save(group);
         } catch (DataIntegrityViolationException e) {
@@ -70,6 +71,11 @@ public class GroupService {
         }
 
         return true;
+    }
+
+    public List<Group> getSchedule() {
+        List<Group> groups = groupRepository.findAllWithSchedule();
+        return groups;
     }
 
     @Autowired

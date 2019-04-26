@@ -18,8 +18,8 @@
                                         <th>День недели</th>
                                         <th>Номер группы</th>
                                     </tr>
-                                    <#list schedules as schedule>
-                                        <#list schedule.groups as group>
+                                    <#list groups as group>
+                                        <#list group.scheduleSet as schedule>
                                         <tr>
                                             <td>${schedule.time}</td>
                                             <td>${schedule.weekday}</td>
