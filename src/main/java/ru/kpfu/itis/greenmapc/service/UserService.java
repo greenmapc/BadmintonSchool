@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface UserService {
-    boolean signUp(SignUpForm form);
+    User signUp(SignUpForm form);
 
     Optional<User> findUserByLogin(String username);
 

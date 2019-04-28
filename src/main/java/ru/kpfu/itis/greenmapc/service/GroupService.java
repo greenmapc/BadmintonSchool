@@ -3,6 +3,7 @@ package ru.kpfu.itis.greenmapc.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import ru.kpfu.itis.greenmapc.exception.CreatingException;
 import ru.kpfu.itis.greenmapc.model.Group;
 import ru.kpfu.itis.greenmapc.model.User;
 import ru.kpfu.itis.greenmapc.repository.GroupRepository;
@@ -52,7 +53,7 @@ public class GroupService {
         prototype.setScheduleSet(original.getScheduleSet());
     }
 
-    public boolean update(Group group) {
+    public Group update(Group group) {
         Group dbGroup = groupRepository.findById(group.getId()).get();
         group.setCoach(dbGroup.getCoach());
         group.setParticipants(dbGroup.getParticipants());
@@ -60,25 +61,22 @@ public class GroupService {
         try {
             if(group.getScheduleSet().isEmpty()) {
                 groupRepository.updateGroup(group.getAgeCategory(), group.getGroupNumber(), group.getId());
+                return group;
             } else {
-                groupRepository.save(group);
+                return groupRepository.save(group);
             }
         } catch (DataIntegrityViolationException e) {
-            return false;
+            throw new CreatingException("Неудачная попытка обновления группы. ID: " + group.getId());
         }
-
-        return true;
     }
 
-    public boolean save(Group group) {
+    public Group save(Group group) {
 
         try {
-            groupRepository.save(group);
+            return groupRepository.save(group);
         } catch (DataIntegrityViolationException e) {
-            return false;
+            throw new CreatingException("Неудачная попытка создания группы");
         }
-
-        return true;
     }
 
     public List<Group> getSchedule() {

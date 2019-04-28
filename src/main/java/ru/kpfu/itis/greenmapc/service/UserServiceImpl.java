@@ -3,6 +3,7 @@ package ru.kpfu.itis.greenmapc.service;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import ru.kpfu.itis.greenmapc.exception.CreatingException;
 import ru.kpfu.itis.greenmapc.form.SettingsForm;
 import ru.kpfu.itis.greenmapc.form.SignUpForm;
 import ru.kpfu.itis.greenmapc.model.Login;
@@ -28,7 +29,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean signUp(SignUpForm form) {
+    public User signUp(SignUpForm form) {
         Set<RoleEnum> roleSet = new HashSet<>();
 
         if(form.getLogin().equals("admin")) {
@@ -49,11 +50,10 @@ public class UserServiceImpl implements UserService {
         user.setLogin(login);
 
         try {
-            userRepository.save(user);
+            return userRepository.save(user);
         } catch (DataIntegrityViolationException e) {
-            return false;
+            throw new CreatingException("Неудачная попытка регистрации пользователя");
         }
-        return true;
     }
 
     @Override

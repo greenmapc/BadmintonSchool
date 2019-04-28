@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import ru.kpfu.itis.greenmapc.exception.CreatingException;
 import ru.kpfu.itis.greenmapc.form.SignUpForm;
 import ru.kpfu.itis.greenmapc.model.User;
 import ru.kpfu.itis.greenmapc.service.UserService;
@@ -55,13 +56,13 @@ public class SignController {
             return "signUp";
         }
 
-        if(!userService.signUp(signUpForm)) {
+        try {
+            userService.signUp(signUpForm);
+            return "redirect:signin";
+        } catch (CreatingException e) {
             bindingResult.rejectValue("login", "exit.user");
-            System.out.println(bindingResult.getAllErrors());
             return "signUp";
         }
-
-        return "redirect:signin";
     }
 
     @Autowired

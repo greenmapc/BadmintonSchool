@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
+import ru.kpfu.itis.greenmapc.exception.CreatingException;
 import ru.kpfu.itis.greenmapc.form.ScheduleForm;
 import ru.kpfu.itis.greenmapc.model.Group;
 import ru.kpfu.itis.greenmapc.model.User;
@@ -69,10 +70,11 @@ public class AdminController {
         if(bindingResult.hasErrors()) {
             modelMap.addAttribute("inputError", "Все поля должны быть корректно заполнены");
         } else {
-            if (!groupService.update(group)) {
-                modelMap.addAttribute("error", "Группа с таким номером уже существует");
-            } else {
+            try {
+                groupService.update(group);
                 modelMap.addAttribute("success", "Информация обновлена");
+            } catch (CreatingException e) {
+                modelMap.addAttribute("error", "Группа с таким номером уже существует");
             }
         }
 
@@ -100,10 +102,11 @@ public class AdminController {
         if(bindingResult.hasErrors()) {
             modelMap.addAttribute("inputError", "Все поля должны быть корректно заполнены");
         } else {
-            if (!groupService.save(group)) {
-                modelMap.addAttribute("error", "Группа с таким номером уже существует");
-            } else {
+            try {
+                groupService.save(group);
                 modelMap.addAttribute("success", "Группа создана");
+            } catch (CreatingException e) {
+                modelMap.addAttribute("error", "Группа с таким номером уже существует");
             }
         }
 
@@ -127,10 +130,11 @@ public class AdminController {
                                  @Validated @ModelAttribute("schedule") ScheduleForm schedule,
                                  BindingResult bindingResult,
                                  ModelMap modelMap) {
-        if(!scheduleService.saveFromForm(schedule)) {
-            //ToDo:catch exception
-        } else {
+        try {
+            scheduleService.saveFromForm(schedule);
             modelMap.addAttribute("success", "Расаписание создано");
+        } catch (CreatingException e) {
+            //ToDo:catch exception
         }
 
         modelMap.addAttribute("user", user);
