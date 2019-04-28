@@ -17,6 +17,7 @@ import ru.kpfu.itis.greenmapc.util.converter.GroupConverter;
 import ru.kpfu.itis.greenmapc.util.converter.ScheduleConverter;
 import ru.kpfu.itis.greenmapc.util.freemarker.ActionPathMethod;
 import ru.kpfu.itis.greenmapc.util.freemarker.HtmlInjectionSecurityMethod;
+import ru.kpfu.itis.greenmapc.util.freemarker.TimeNormalization;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -108,6 +109,8 @@ public class WebConfig implements WebMvcConfigurer {
         Map<String, Object> map = new HashMap<>();
         map.put("action", new ActionPathMethod());
         map.put("normalize", new HtmlInjectionSecurityMethod());
+        map.put("time", new TimeNormalization());
+
         return map;
     }
 }

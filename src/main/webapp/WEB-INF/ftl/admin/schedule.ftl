@@ -21,7 +21,7 @@
                                     <#list groups as group>
                                         <#list group.scheduleSet as schedule>
                                         <tr>
-                                            <td>${schedule.time}</td>
+                                            <td>${time('${schedule.time}')}</td>
                                             <td>${schedule.weekday}</td>
                                             <td>
                                                 <a href="${action("AC#getGroupSettings", 0, group.groupNumber)}">${group.groupNumber}</a>
