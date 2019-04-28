@@ -57,6 +57,17 @@
                                     </#if>
                                 </ul>
                             </div>
+
+                            <div class="title">
+                                <p class="info-title"> Расписание </p>
+                                <ul class="group-schedule">
+                                    <#list group.getScheduleSet() as schedule>
+                                        <li>
+                                            ${time(schedule.time)} ${schedule.weekday}
+                                        </li>
+
+                                    </#list>
+                                </ul>
                         </div>
                     </div>
                 </div>

@@ -487,6 +487,10 @@ li.admin-section:hover {
     text-align: center;
 }
 
+ul.group-schedule {
+    list-style-type: none !important;
+}
+
 .group-table tr {
     text-align: center;
 }
