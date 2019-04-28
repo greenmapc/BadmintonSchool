@@ -143,7 +143,7 @@ public class AdminController {
     public String getSchedule(@AuthenticationPrincipal User user,
                               ModelMap modelMap) {
         modelMap.addAttribute("user", user);
-       List<Group> groupList = groupService.getSchedule();
+        List<Group> groupList = groupService.getSchedule();
         modelMap.addAttribute("groups", groupList);
 
         return "admin/schedule";

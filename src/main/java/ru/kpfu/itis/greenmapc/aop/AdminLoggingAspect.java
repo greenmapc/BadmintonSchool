@@ -7,7 +7,9 @@ import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.aop.Pointcut;
 import org.springframework.stereotype.Component;
+import ru.kpfu.itis.greenmapc.form.ScheduleForm;
 import ru.kpfu.itis.greenmapc.model.Group;
+import ru.kpfu.itis.greenmapc.model.Schedule;
 
 import java.util.logging.Logger;
 
@@ -30,6 +32,16 @@ public class AdminLoggingAspect {
             Group group = (Group) joinPoint.getArgs()[0];
             LOGGER.info("Создана новая группа. ID: " + group.getId());
 
+        }
+    }
+
+    @AfterReturning(pointcut = "execution (* ru.kpfu.itis.greenmapc.service.ScheduleService.saveFromForm(..))", returning = "value")
+    public void scheduleCreate(JoinPoint joinPoint, Object value) {
+        if ((boolean) value) {
+            ScheduleForm schedule = (ScheduleForm) joinPoint.getArgs()[0];
+            LOGGER.info("Создано новое расписание: " +
+                    schedule.getTime() + " " +
+                    schedule.getWeekday());
         }
     }
 
