@@ -1,8 +1,8 @@
 #Database properties
 
-db.url=jdbc:postgresql://localhost:5432/badminton_school
-db.user=postgres
-db.password=P1892CN
+db.url=jdbc:postgresql://localhost:5432/db_name
+db.user=
+db.password=
 db.driverClassName=org.postgresql.Driver
 
 #Hibernate config

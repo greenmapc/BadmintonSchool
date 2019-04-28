@@ -12,3 +12,7 @@ target/
 *.lck
 *.jar
 */dependency-reduced-pom.xml
+
+# Properties #
+src/main/resources/db.properties
+src/main/resources/api.properties
