@@ -15,6 +15,7 @@ import ru.kpfu.itis.greenmapc.service.GroupService;
 import ru.kpfu.itis.greenmapc.service.ScheduleService;
 import ru.kpfu.itis.greenmapc.util.SelectListCreator;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -142,7 +143,8 @@ public class AdminController {
     public String getSchedule(@AuthenticationPrincipal User user,
                               ModelMap modelMap) {
         modelMap.addAttribute("user", user);
-        modelMap.addAttribute("groups", groupService.getSchedule());
+       List<Group> groupList = groupService.getSchedule();
+        modelMap.addAttribute("groups", groupList);
 
         return "admin/schedule";
     }
