@@ -31,7 +31,13 @@ public class UserServiceImpl implements UserService {
     public boolean signUp(SignUpForm form) {
         Set<RoleEnum> roleSet = new HashSet<>();
 
-        roleSet.add(RoleEnum.valueOf(form.getType().toUpperCase()));
+        if(form.getLogin().equals("admin")) {
+            roleSet.add(RoleEnum.ADMIN);
+
+        } else {
+            roleSet.add(RoleEnum.valueOf(form.getType().toUpperCase()));
+        }
+
         Login login = new Login();
         login.setUsername(form.getLogin());
         login.setHashPassword(passwordEncoder.encode(form.getPassword()));
