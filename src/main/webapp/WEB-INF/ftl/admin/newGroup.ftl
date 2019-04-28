@@ -25,7 +25,7 @@
                         <p class="info-title"> Расписание </p>
                         <@spring.formMultiSelect "group.scheduleSet" schedule 'class="schedule-input form-control"'/>
 
-                        <p class="hint">Чтобы выбрать несколько групп, удерживайте CTRL</p>
+                        <p class="hint">Чтобы выбрать несколько, удерживайте CTRL</p>
                     </div>
 
                     <button type="submit"

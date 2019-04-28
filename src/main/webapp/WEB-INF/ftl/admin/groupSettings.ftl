@@ -22,6 +22,13 @@
                         <@spring.formInput "group.ageCategory" "class='form-control' placeholder='${noInforamtion}'" "text"/>
                     </div>
 
+                    <div class="title">
+                        <p class="info-title"> Расписание </p>
+                        <@spring.formMultiSelect "group.scheduleSet" schedule 'class="schedule-input form-control"'/>
+
+                        <p class="hint">Чтобы выбрать несколько, удерживайте CTRL</p>
+                    </div>
+
                         <@spring.formHiddenInput "group.id"/>
 
                     <button type="submit"

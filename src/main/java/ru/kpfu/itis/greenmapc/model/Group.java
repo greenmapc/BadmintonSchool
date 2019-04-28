@@ -26,20 +26,20 @@ public class Group {
     @Column(name = "age_category")
     private String ageCategory;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "coach", referencedColumnName = "id")
     private User coach;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinTable(
             name = "group_schedule",
             joinColumns = @JoinColumn(name = "group_id"),
             inverseJoinColumns = @JoinColumn(name = "schedule_id")
     )
-    @ToString.Exclude
+
     private Set<Schedule> scheduleSet = new HashSet<>();
 
     @OneToMany(mappedBy = "group")
-    private Set<User> participants;
+    private Set<User> participants = new HashSet<>();
 
 }

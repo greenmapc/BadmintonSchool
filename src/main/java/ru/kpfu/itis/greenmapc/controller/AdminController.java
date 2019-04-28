@@ -51,6 +51,7 @@ public class AdminController {
 
         groupService.createPrototype(optionalGroup.get(), group);
 
+        modelMap.addAttribute("schedule", SelectListCreator.scheduleCreate(scheduleService.findAll()));
         modelMap.addAttribute("user", user);
         modelMap.addAttribute("groupNumber", groupNumber);
 
@@ -74,6 +75,7 @@ public class AdminController {
             }
         }
 
+        modelMap.addAttribute("schedule", SelectListCreator.scheduleCreate(scheduleService.findAll()));
         modelMap.addAttribute("user", user);
         modelMap.addAttribute("groupNumber", groupNumber);
 

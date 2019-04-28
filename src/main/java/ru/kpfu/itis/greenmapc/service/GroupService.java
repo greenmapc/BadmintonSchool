@@ -53,8 +53,16 @@ public class GroupService {
     }
 
     public boolean update(Group group) {
+        Group dbGroup = groupRepository.findById(group.getId()).get();
+        group.setCoach(dbGroup.getCoach());
+        group.setParticipants(dbGroup.getParticipants());
+
         try {
-            groupRepository.updateGroup(group.getAgeCategory(), group.getGroupNumber(), group.getId());
+            if(group.getScheduleSet().isEmpty()) {
+                groupRepository.updateGroup(group.getAgeCategory(), group.getGroupNumber(), group.getId());
+            } else {
+                groupRepository.save(group);
+            }
         } catch (DataIntegrityViolationException e) {
             return false;
         }
