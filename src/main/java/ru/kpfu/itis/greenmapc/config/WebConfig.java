@@ -77,6 +77,9 @@ public class WebConfig implements WebMvcConfigurer {
         ReloadableResourceBundleMessageSource resourceBundleMessageSource = new ReloadableResourceBundleMessageSource();
         resourceBundleMessageSource.setBasenames("classpath:errorMessages/errors");
         resourceBundleMessageSource.setCacheSeconds(0);
+
+//        ToDo:problem with cyrillic symbols
+
         resourceBundleMessageSource.setDefaultEncoding("UTF-8");
         resourceBundleMessageSource.setUseCodeAsDefaultMessage(false);
         return resourceBundleMessageSource;
