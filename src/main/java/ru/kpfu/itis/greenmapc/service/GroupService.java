@@ -3,11 +3,14 @@ package ru.kpfu.itis.greenmapc.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
+import ru.kpfu.itis.greenmapc.dto.GroupScheduleDto;
 import ru.kpfu.itis.greenmapc.exception.CreatingException;
 import ru.kpfu.itis.greenmapc.model.Group;
+import ru.kpfu.itis.greenmapc.model.Schedule;
 import ru.kpfu.itis.greenmapc.model.User;
 import ru.kpfu.itis.greenmapc.repository.GroupRepository;
 
+import java.sql.Time;
 import java.util.*;
 
 @Service
@@ -79,9 +82,31 @@ public class GroupService {
         }
     }
 
-    public List<Group> getSchedule() {
+    public List<GroupScheduleDto> getSchedule(String sortBy) {
         List<Group> groups = groupRepository.findAllWithSchedule();
-        return groups;
+
+        List<GroupScheduleDto> dtos = new ArrayList<>();
+        for(Group group : groups) {
+            for(Schedule schedule : group.getScheduleSet()) {
+                dtos.add(GroupScheduleDto.builder()
+                        .groupNumber(group.getGroupNumber())
+                        .weekday(schedule.getWeekday())
+                        .time(schedule.getTime())
+                        .build());
+            }
+        }
+
+        try {
+            switch (sortBy) {
+                case "group" :
+                    dtos.sort(Comparator.comparingInt(GroupScheduleDto::getGroupNumber));
+                    break;
+                case "time" :
+                    dtos.sort(Comparator.comparing(o -> o.getTime().toString()));
+            }
+        } catch (NullPointerException e) { }
+
+        return dtos;
     }
 
     @Autowired

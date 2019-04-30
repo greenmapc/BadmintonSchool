@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
+import ru.kpfu.itis.greenmapc.dto.GroupScheduleDto;
 import ru.kpfu.itis.greenmapc.exception.CreatingException;
 import ru.kpfu.itis.greenmapc.form.ScheduleForm;
 import ru.kpfu.itis.greenmapc.model.Group;
@@ -144,11 +145,12 @@ public class AdminController {
     }
 
     @GetMapping("/schedule")
-    public String getSchedule(@AuthenticationPrincipal User user,
+    public String getSchedule(@RequestParam(required = false, name = "sortBy") String sortBy,
+                              @AuthenticationPrincipal User user,
                               ModelMap modelMap) {
         modelMap.addAttribute("user", user);
-        List<Group> groupList = groupService.getSchedule();
-        modelMap.addAttribute("groups", groupList);
+        List<GroupScheduleDto> schedule = groupService.getSchedule(sortBy);
+        modelMap.addAttribute("schedule", schedule);
 
         return "admin/schedule";
     }
