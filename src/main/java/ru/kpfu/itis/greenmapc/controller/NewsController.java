@@ -1,7 +1,6 @@
 package ru.kpfu.itis.greenmapc.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,7 +13,6 @@ import ru.kpfu.itis.greenmapc.model.User;
 import ru.kpfu.itis.greenmapc.model.VkWallRecord;
 import ru.kpfu.itis.greenmapc.service.NewsService;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Optional;
 

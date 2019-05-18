@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ru.kpfu.itis.greenmapc.model.User;
 import ru.kpfu.itis.greenmapc.service.MainPageService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
